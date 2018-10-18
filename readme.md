@@ -48,7 +48,7 @@
 	```
 11.	Upload multiple file
 	```
-	aws s3 cp s3://bucketcreatedbydineshviacli/ --recursive
+	aws s3 cp s3://bucket-name/ --recursive
 	```	
 
 12.	Sync [It is better to sync your updated content only]
