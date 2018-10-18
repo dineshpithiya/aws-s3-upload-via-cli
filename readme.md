@@ -60,4 +60,14 @@
 	```	
 	* * * * * aws s3 sync /var/www/source-directory/ s3://bucket-name/
 	```
+14. Download latest database and also upload on to the s3-bucket
+	- Create one sheel script name with mysqldump.sh and set path into the crontab [Note:- It should be execute before your s3-bucket crontab execute]
+	```
+	mysqldump -u 'root' -p'password@123456' xyz-database-name > /var/www/folder-name/databasename_`date +\%Y\%m\%d_\%H\%M`.sql
+	```	
+	- Set this shell script into your crontab
+	```
+	# sync mysql latest database
+	* * * * * /var/www/folder-name/mysqldump.sh >> /var/www/folder-name/mysql-log.log 2>&1
+	```
 Reference Link:- [Click](https://docs.aws.amazon.com/cli/latest/userguide/using-s3-commands.html.
